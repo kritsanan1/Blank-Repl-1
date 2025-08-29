@@ -1,0 +1,40 @@
+
+{
+  "expo": {
+    "name": "Enterprise Expo App",
+    "slug": "expo-enterprise-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icons/app-icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.company.expoenterpriseapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icons/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.company.expoenterpriseapp"
+    },
+    "web": {
+      "favicon": "./assets/images/icons/favicon.png",
+      "bundler": "metro"
+    },
+    "scheme": "expo-enterprise-app",
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-notifications"
+    ]
+  }
+}
