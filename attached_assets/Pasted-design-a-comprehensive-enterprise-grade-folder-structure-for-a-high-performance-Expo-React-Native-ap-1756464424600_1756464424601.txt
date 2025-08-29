@@ -1,0 +1,471 @@
+design a comprehensive enterprise-grade folder structure for a high-performance Expo React Native application. This structure is based on proven patterns from large-scale production applications.
+
+🏗️ Complete Enterprise Expo Folder Structure
+
+expo-enterprise-app/
+├── 📁 .expo/                          # Expo configuration and cache
+├── 📁 .github/                        # GitHub workflows and templates
+│   ├── 📁 workflows/
+│   │   ├── ci.yml                     # Continuous integration
+│   │   ├── cd-staging.yml             # Staging deployment
+│   │   └── cd-production.yml          # Production deployment
+│   └── 📁 ISSUE_TEMPLATE/
+├── 📁 assets/                         # Static assets organized by type
+│   ├── 📁 images/
+│   │   ├── 📁 icons/                  # App icons and UI icons
+│   │   ├── 📁 illustrations/          # Complex graphics
+│   │   ├── 📁 logos/                  # Brand assets
+│   │   └── 📁 placeholders/           # Fallback images
+│   ├── 📁 fonts/                      # Custom typography
+│   ├── 📁 animations/                 # Lottie files
+│   └── 📁 audio/                      # Sound effects, music
+├── 📁 src/                           # Main application source
+│   ├── 📁 app/                       # App-level configuration
+│   │   ├── 📁 (auth)/                # Auth-protected routes
+│   │   ├── 📁 (tabs)/                # Tab navigation routes
+│   │   ├── _layout.tsx               # Root layout
+│   │   └── index.tsx                 # Entry point
+│   ├── 📁 components/                # Reusable UI components
+│   │   ├── 📁 ui/                    # Base design system components
+│   │   │   ├── Button/
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── Button.test.tsx
+│   │   │   │   ├── Button.stories.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Input/
+│   │   │   ├── Modal/
+│   │   │   └── index.ts              # Barrel exports
+│   │   ├── 📁 forms/                 # Form-specific components
+│   │   │   ├── LoginForm/
+│   │   │   ├── ProfileForm/
+│   │   │   └── index.ts
+│   │   ├── 📁 navigation/            # Navigation components
+│   │   │   ├── TabBar/
+│   │   │   ├── Header/
+│   │   │   └── index.ts
+│   │   ├── 📁 feedback/              # User feedback components
+│   │   │   ├── LoadingSpinner/
+│   │   │   ├── ErrorBoundary/
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   ├── 📁 features/                  # Feature-based modules
+│   │   ├── 📁 authentication/
+│   │   │   ├── 📁 components/
+│   │   │   │   ├── LoginScreen/
+│   │   │   │   ├── SignupScreen/
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 hooks/
+│   │   │   │   ├── useAuth.ts
+│   │   │   │   ├── useLogin.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 services/
+│   │   │   │   ├── authApi.ts
+│   │   │   │   ├── tokenStorage.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 store/
+│   │   │   │   ├── authSlice.ts
+│   │   │   │   ├── authSelectors.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 types/
+│   │   │   │   ├── auth.types.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 utils/
+│   │   │   │   ├── validation.ts
+│   │   │   │   ├── encryption.ts
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 dashboard/
+│   │   ├── 📁 profile/
+│   │   ├── 📁 notifications/
+│   │   ├── 📁 settings/
+│   │   └── index.ts
+│   ├── 📁 shared/                    # Shared utilities and services
+│   │   ├── 📁 api/                   # API layer
+│   │   │   ├── 📁 clients/
+│   │   │   │   ├── httpClient.ts
+│   │   │   │   ├── graphqlClient.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 interceptors/
+│   │   │   │   ├── authInterceptor.ts
+│   │   │   │   ├── errorInterceptor.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 endpoints/
+│   │   │   │   ├── auth.endpoints.ts
+│   │   │   │   ├── user.endpoints.ts
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 constants/             # Application constants
+│   │   │   ├── api.constants.ts
+│   │   │   ├── app.constants.ts
+│   │   │   ├── navigation.constants.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 hooks/                 # Shared custom hooks
+│   │   │   ├── useAsyncStorage.ts
+│   │   │   ├── useNetworkStatus.ts
+│   │   │   ├── usePermissions.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 utils/                 # Utility functions
+│   │   │   ├── 📁 formatters/
+│   │   │   │   ├── date.formatters.ts
+│   │   │   │   ├── currency.formatters.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 validators/
+│   │   │   │   ├── form.validators.ts
+│   │   │   │   ├── data.validators.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── 📁 helpers/
+│   │   │   │   ├── array.helpers.ts
+│   │   │   │   ├── object.helpers.ts
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 types/                 # Shared TypeScript types
+│   │   │   ├── api.types.ts
+│   │   │   ├── navigation.types.ts
+│   │   │   ├── common.types.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   ├── 📁 store/                     # Global state management
+│   │   ├── 📁 slices/
+│   │   │   ├── appSlice.ts
+│   │   │   ├── userSlice.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 middleware/
+│   │   │   ├── apiMiddleware.ts
+│   │   │   ├── persistMiddleware.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 selectors/
+│   │   │   ├── app.selectors.ts
+│   │   │   ├── user.selectors.ts
+│   │   │   └── index.ts
+│   │   ├── store.ts
+│   │   └── index.ts
+│   ├── 📁 theme/                     # Design system and theming
+│   │   ├── 📁 colors/
+│   │   │   ├── light.colors.ts
+│   │   │   ├── dark.colors.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 typography/
+│   │   │   ├── fonts.ts
+│   │   │   ├── sizes.ts
+│   │   │   └── index.ts
+│   │   ├── 📁 spacing/
+│   │   │   ├── margins.ts
+│   │   │   ├── paddings.ts
+│   │   │   └── index.ts
+│   │   ├── theme.ts
+│   │   └── index.ts
+│   ├── 📁 navigation/                # Navigation configuration
+│   │   ├── 📁 navigators/
+│   │   │   ├── AppNavigator.tsx
+│   │   │   ├── AuthNavigator.tsx
+│   │   │   ├── TabNavigator.tsx
+│   │   │   └── index.ts
+│   │   ├── 📁 screens/               # Screen-level routing logic
+│   │   ├── navigationTypes.ts
+│   │   └── index.ts
+│   └── 📁 services/                  # External service integrations
+│       ├── 📁 analytics/
+│       │   ├── analytics.service.ts
+│       │   ├── events.constants.ts
+│       │   └── index.ts
+│       ├── 📁 notifications/
+│       │   ├── push.service.ts
+│       │   ├── local.service.ts
+│       │   └── index.ts
+│       ├── 📁 storage/
+│       │   ├── secureStorage.service.ts
+│       │   ├── asyncStorage.service.ts
+│       │   └── index.ts
+│       └── index.ts
+├── 📁 __tests__/                     # Global test configuration
+│   ├── 📁 __mocks__/
+│   │   ├── react-native.js
+│   │   ├── @expo/vector-icons.js
+│   │   └── expo-modules.js
+│   ├── 📁 fixtures/
+│   │   ├── user.fixtures.ts
+│   │   ├── api.fixtures.ts
+│   │   └── index.ts
+│   ├── 📁 utils/
+│   │   ├── testUtils.tsx
+│   │   ├── renderWithProviders.tsx
+│   │   └── index.ts
+│   └── setup.ts
+├── 📁 docs/                          # Documentation
+│   ├── 📁 architecture/
+│   ├── 📁 api/
+│   ├── 📁 deployment/
+│   └── README.md
+├── 📁 scripts/                       # Build and deployment scripts
+│   ├── build-android.sh
+│   ├── build-ios.sh
+│   ├── deploy-staging.sh
+│   └── deploy-production.sh
+├── 📁 config/                        # Configuration files
+│   ├── 📁 env/
+│   │   ├── development.ts
+│   │   ├── staging.ts
+│   │   ├── production.ts
+│   │   └── index.ts
+│   ├── babel.config.js
+│   ├── metro.config.js
+│   └── jest.config.js
+├── app.json                          # Expo configuration
+├── eas.json                          # EAS Build configuration
+├── package.json
+├── tsconfig.json
+├── .env.example
+├── .gitignore
+└── README.md
+📋 Detailed Directory Explanations
+1. Core Application Structure (src/)
+src/app/ - Expo Router File-Based Routing
+This follows Expo Router v3 conventions for file-based routing:
+
+_layout.tsx: Root layout with providers and global navigation
+(auth)/: Auth-protected route group
+(tabs)/: Tab-based navigation group
+Supports nested layouts and route groups for complex navigation
+src/features/ - Feature-Based Architecture
+Each feature is a self-contained module with its own:
+
+Components: Feature-specific UI components
+Hooks: Custom hooks for feature logic
+Services: API calls and business logic
+Store: State management (Redux slices)
+Types: TypeScript definitions
+Utils: Feature-specific utilities
+Example Feature Structure:
+
+
+// src/features/authentication/hooks/useAuth.ts
+export const useAuth = () => {
+  const dispatch = useAppDispatch();
+  const { user, isLoading } = useAppSelector(authSelectors.selectAuth);
+  
+  const login = useCallback(async (credentials: LoginCredentials) => {
+    return dispatch(authActions.login(credentials));
+  }, [dispatch]);
+  
+  return { user, isLoading, login };
+};
+src/components/ - Reusable UI Components
+Organized by component type and complexity:
+
+ui/: Base design system components (Button, Input, Modal)
+forms/: Form-specific composite components
+navigation/: Navigation-related components
+feedback/: Loading states, errors, empty states
+2. Shared Resources (src/shared/)
+src/shared/api/ - API Layer Architecture
+Centralized API management with:
+
+Clients: HTTP/GraphQL client configuration
+Interceptors: Request/response middleware
+Endpoints: API endpoint definitions
+
+// src/shared/api/clients/httpClient.ts
+import axios from 'axios';
+import { authInterceptor } from '../interceptors';
+
+export const httpClient = axios.create({
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
+  timeout: 10000,
+});
+
+httpClient.interceptors.request.use(authInterceptor.request);
+httpClient.interceptors.response.use(authInterceptor.response);
+src/shared/utils/ - Utility Functions
+Organized by functionality:
+
+Formatters: Data formatting utilities
+Validators: Input validation functions
+Helpers: General-purpose utilities
+3. State Management (src/store/)
+Redux Toolkit Architecture
+Slices: Feature-specific state slices
+Middleware: Custom middleware for API calls, persistence
+Selectors: Memoized state selectors
+
+// src/store/store.ts
+import { configureStore } from '@reduxjs/toolkit';
+import { authSlice } from '../features/authentication/store';
+import { apiMiddleware } from './middleware';
+
+export const store = configureStore({
+  reducer: {
+    auth: authSlice.reducer,
+    // Other feature slices
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
+    }).concat(apiMiddleware),
+});
+4. Design System (src/theme/)
+Comprehensive Theme Architecture
+Colors: Light/dark mode support
+Typography: Font families, sizes, weights
+Spacing: Consistent spacing system
+
+// src/theme/theme.ts
+export const theme = {
+  colors: {
+    primary: {
+      50: '#f0f9ff',
+      500: '#3b82f6',
+      900: '#1e3a8a',
+    },
+    // Color scales for all brand colors
+  },
+  typography: {
+    fontFamily: {
+      regular: 'Inter-Regular',
+      medium: 'Inter-Medium',
+      bold: 'Inter-Bold',
+    },
+    fontSize: {
+      xs: 12,
+      sm: 14,
+      base: 16,
+      lg: 18,
+      xl: 20,
+    },
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+  },
+};
+🎯 Architecture Patterns & Best Practices
+1. Feature-Based Organization
+Each feature is completely self-contained, promoting:
+
+Scalability: Teams can work independently on features
+Maintainability: Clear boundaries and responsibilities
+Testability: Isolated testing per feature
+Code Splitting: Easy lazy loading of features
+2. Naming Conventions
+Files and Directories:
+PascalCase: Components (UserProfile.tsx)
+camelCase: Utilities, hooks (useUserProfile.ts)
+kebab-case: Directories (user-profile/)
+SCREAMING_SNAKE_CASE: Constants (API_ENDPOINTS.ts)
+Component Structure:
+
+// src/components/ui/Button/Button.tsx
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+}
+
+export const Button: React.FC<ButtonProps> = ({ 
+  variant = 'primary', 
+  size = 'md', 
+  children 
+}) => {
+  // Component implementation
+};
+3. Performance Optimization Strategies
+Code Splitting Implementation:
+
+// src/features/dashboard/index.ts
+import { lazy } from 'react';
+
+export const DashboardScreen = lazy(() => 
+  import('./components/DashboardScreen').then(module => ({
+    default: module.DashboardScreen
+  }))
+);
+Asset Optimization:
+Image Management: Organized by resolution and usage
+Font Loading: Preload critical fonts, lazy load others
+Bundle Splitting: Feature-based chunks
+4. Environment Configuration
+Multi-Environment Setup:
+
+// config/env/index.ts
+interface AppConfig {
+  apiUrl: string;
+  analyticsKey: string;
+  debugMode: boolean;
+}
+
+const configs: Record<string, AppConfig> = {
+  development: {
+    apiUrl: 'https://api-dev.company.com',
+    analyticsKey: 'dev-key',
+    debugMode: true,
+  },
+  staging: {
+    apiUrl: 'https://api-staging.company.com',
+    analyticsKey: 'staging-key',
+    debugMode: false,
+  },
+  production: {
+    apiUrl: 'https://api.company.com',
+    analyticsKey: 'prod-key',
+    debugMode: false,
+  },
+};
+
+export const config = configs[process.env.NODE_ENV || 'development'];
+5. Testing Structure Integration
+Co-located Testing:
+Unit tests alongside components (Button.test.tsx)
+Integration tests in feature directories
+E2E tests in dedicated e2e/ directory
+Test Utilities:
+
+// __tests__/utils/renderWithProviders.tsx
+import { render } from '@testing-library/react-native';
+import { Provider } from 'react-redux';
+import { store } from '../../src/store';
+
+export const renderWithProviders = (component: React.ReactElement) => {
+  return render(
+    <Provider store={store}>
+      {component}
+    </Provider>
+  );
+};
+🚀 Performance & Scalability Features
+1. Lazy Loading Strategy
+Route-based: Lazy load entire feature modules
+Component-based: Lazy load heavy components
+Asset-based: Progressive image loading
+2. Bundle Optimization
+Metro Configuration: Optimized for React Native
+Tree Shaking: Remove unused code
+Code Splitting: Feature-based chunks
+3. Memory Management
+Image Caching: Efficient image loading and caching
+State Cleanup: Automatic cleanup on unmount
+Memory Profiling: Built-in performance monitoring
+🔧 Development Workflow
+1. Component Development
+
+# Create new component with tests and stories
+npm run generate:component ComponentName
+
+# Create new feature module
+npm run generate:feature FeatureName
+2. Build & Deployment
+
+# Development build
+npm run build:dev
+
+# Staging deployment
+npm run deploy:staging
+
+# Production deployment
+npm run deploy:prod
+This enterprise-grade structure supports teams of 10+ developers while maintaining code quality, performance, and scalability. Each directory serves a specific purpose in the overall architecture, promoting clean separation of concerns and efficient development workflows.
+
+The structure emphasizes modularity, testability, and maintainability - critical factors for large-scale enterprise applications that need to evolve and scale over time.
